@@ -5,10 +5,7 @@ import com.hqjin.tmall.service.CategoryService;
 import com.hqjin.tmall.util.ImageUtil;
 import com.hqjin.tmall.util.Page4Navigator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -50,5 +47,16 @@ public class CategoryController {
         image.transferTo(file);
         BufferedImage bufferedImage= ImageUtil.change2jpg(file);
         ImageIO.write(bufferedImage,"jpg",file);
+    }
+    @DeleteMapping(value="/categories/{id}")
+    public String delete(
+            @PathVariable int id,
+            HttpServletRequest request
+    ) throws  Exception{
+        categoryService.delete(id);
+        File imageFolder=new File(request.getServletContext().getRealPath("img/category"));
+        File file=new File(imageFolder,id+".jpg");
+        file.delete();
+        return null;
     }
 }

@@ -30,4 +30,7 @@ public class CategoryService {
     public void add(Category category){
         categoryDAO.save(category);
     }
+    public void delete(Integer id){
+        categoryDAO.deleteById(id);
+    }
 }

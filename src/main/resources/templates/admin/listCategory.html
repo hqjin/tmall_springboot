@@ -53,6 +53,16 @@
                             $("#categoryPic").val('');
                             vue.file=null;
                         });
+                    },
+                    deleteBean:function (id) {
+                        if(!checkDeleteLink())//确认是否删除
+                            return;
+                        var url=this.uri+"/"+id;
+                        axios.delete(url).then(function (response) {
+                            if(response.data.length!=0)
+                                alert(response.data);
+                            else vue.list(0);
+                        });
                     }
                 }
             });
