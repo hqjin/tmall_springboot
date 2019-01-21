@@ -59,4 +59,19 @@ public class CategoryController {
         file.delete();
         return null;
     }
+    @GetMapping("/categories/{id}")
+    public Category get(
+            @PathVariable int id
+    ){
+        return categoryService.get(id);
+    }
+    @PutMapping("/categories/{id}")
+    public Object update(Category category,MultipartFile image,HttpServletRequest request) throws IOException {
+        String name=request.getParameter("name");
+        categoryService.update(category);
+        if(image!=null){
+            saveOrUpdateImageFile(category,request,image);
+        }
+        return  category;
+    }
 }

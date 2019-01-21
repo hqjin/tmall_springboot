@@ -33,4 +33,10 @@ public class CategoryService {
     public void delete(Integer id){
         categoryDAO.deleteById(id);
     }
+    public Category get(Integer id){
+        return categoryDAO.getOne(id);
+    }
+    public void update(Category category){
+        categoryDAO.save(category);
+    }
 }
