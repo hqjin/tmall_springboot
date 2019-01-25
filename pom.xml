@@ -64,6 +64,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>sping-boot-starter-data-elasticsearch</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-elasticsearch</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
 		<!--用了elasticsearch，就要这么个东西兼容-->
 		<dependency>
 			<groupId>com.sun.jna</groupId>
