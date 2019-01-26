@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PropertyService {
     @Autowired
@@ -36,5 +38,8 @@ public class PropertyService {
     }
     public void update(Property property){
         propertyDAO.save(property);
+    }
+    public List<Property> listByCategory(Category category){
+        return propertyDAO.findByCategory(category);
     }
 }
